@@ -23,15 +23,15 @@ namespace ClubFromage
 
             mydbal = new Dbal("dbclubfromage");
             //myPays = new Pays();
-            myDaoPays = new DaoPays(mydbal);
+            //myDaoPays = new DaoPays(mydbal);
 
             //myDaoPays.Insert(myPays);
-            myDaoPays.InsertFromCSV("D:\\Thalia\\slam5\\ClubFromageTemplate-master\\ClubFromageTemplate-master\\ModelLayer\\import files\\pays.csv");
+            //myDaoPays.InsertFromCSV("D:\\Thalia\\slam5\\ClubFromageTemplate-master\\ClubFromageTemplate-master\\ModelLayer\\import files\\pays.csv");
 
             //myFromage = new Fromage(2,"Reblochon",default,myPays,default);
-            myDaoFromage = new DaoFromage(mydbal, myDaoPays);
+            //myDaoFromage = new DaoFromage(mydbal, myDaoPays);
             //myDaoFromage.Insert(myFromage);
-            myDaoFromage.InsertFromCSV("D:\\Thalia\\slam5\\ClubFromageTemplate-master\\ClubFromageTemplate-master\\ModelLayer\\import files\\tableauNomDep.csv");
+            //myDaoFromage.InsertFromCSV("D:\\Thalia\\slam5\\ClubFromageTemplate-master\\ClubFromageTemplate-master\\ModelLayer\\import files\\tableauNomDep.csv");
             //List<Fromage> myFromages = myDaoFromage.SelectAll();
             //foreach (Fromage f in myFromages)
             //{
