@@ -159,5 +159,15 @@ namespace WpfClubFromage.viewModel
             this.vmDaoFromage.Update(this.activeFromage);
             MessageBox.Show("Mis à jour réussis");
         }
+
+        private void AddFromage()
+        {
+            MessageBox.Show("Fromage ajouté");
+        }
+
+        private void DeleteFromage()
+        {
+            MessageBox.Show("Fromage supprimé");
+        }
     }
 }

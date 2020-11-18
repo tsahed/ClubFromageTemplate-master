@@ -6,13 +6,70 @@
         xmlns:local="clr-namespace:WpfClubFromage"
         mc:Ignorable="d"
         Title="Affichage des fromages" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" SnapsToDevicePixels="true" StrokeThickness="1" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="25" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid x:Name="mainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="1"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="listFromagesView" ItemsSource="{Binding ListFromages}" SelectedItem="{Binding SelectedFromage}" IsSynchronizedWithCurrentItem="True" Grid.Column="0" Background="#FFF8ECFD" />
+        <ListBox x:Name="listFromagesView" ItemsSource="{Binding ListFromages}" SelectedItem="{Binding SelectedFromage}" IsSynchronizedWithCurrentItem="True" Grid.Column="0" Background="#FFFDE7FC" Grid.ColumnSpan="2" />
         <GridSplitter Grid.Column="1"/>
         <Grid x:Name="displayFromage" Grid.Column="2">
             <Grid.ColumnDefinitions>
@@ -27,14 +84,32 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Label Content="Nom Fromage" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
-            <TextBox x:Name="nomFromage" Text="{Binding Name}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10"/>
+            <TextBox x:Name="nomFromage" Text="{Binding Name}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10" Background="White" BorderBrush="Black"/>
             <Label Content="Origine" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
-            <ComboBox x:Name="listOrigin" ItemsSource="{Binding ListPays, Mode=OneTime}" SelectedItem="{Binding Origin}" IsSynchronizedWithCurrentItem="True" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10" BorderBrush="#FFF8ECFD"/>
+            <ComboBox x:Name="listOrigin" ItemsSource="{Binding ListPays, Mode=OneTime}" SelectedItem="{Binding Origin}" IsSynchronizedWithCurrentItem="True" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10" BorderBrush="Black">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+            </ComboBox>
             <Label Content="Date de création" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
-            <DatePicker x:Name="dateCreation" SelectedDate="{Binding Creation}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10"/>
-            <Label Content="Image du fromage" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
+            <DatePicker x:Name="dateCreation" SelectedDate="{Binding Creation}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10" Background="White">
+                <DatePicker.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                        <GradientStop Color="#FFA3AEB9"/>
+                        <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                        <GradientStop Color="#FF718597" Offset="0.375"/>
+                        <GradientStop Color="Black" Offset="1"/>
+                    </LinearGradientBrush>
+                </DatePicker.BorderBrush>
+            </DatePicker>
+            <Label Content="Image du fromage" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
             <Image x:Name="imageFromage" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
-            <Button x:Name="updateFromage" Content="Mise à jour" Command="{Binding UpdateCommand}" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="10" Background="#FFF8ECFD" BorderBrush="Black" FontWeight="Bold" Foreground="Black"/>
+            <Button Style="{DynamicResource ButtonStyle1}" x:Name="updateFromage" Content="Mise à jour" Command="{Binding UpdateCommand}" Grid.Row="4" Grid.ColumnSpan="2" Margin="32,44,34,10" Background="#FFFDE4D8" BorderBrush="White" FontWeight="Bold" Foreground="Black" FontStyle="Normal" Height="33" Width="333"/>
+            <Button Style="{DynamicResource ButtonStyle1}" x:Name="btn_ajouter" Content="Ajouter" Command="{Binding AddCommand}" Margin="32,55,0,0" Grid.Row="3" VerticalAlignment="Top" Height="33" Grid.ColumnSpan="2" Background="#FFC4F5DF" BorderBrush="White" FontWeight="Bold" FontStyle="Normal" HorizontalAlignment="Left" Width="333" Grid.RowSpan="2"/>
+            <Button Style="{DynamicResource ButtonStyle1}" x:Name="btn_supprimer" Content="Supprimer" Command="{Binding DeleteCommand}" HorizontalAlignment="Left" Margin="32,6,0,0" Grid.Row="4" VerticalAlignment="Top" Background="#FFFBCEF1" Width="333" Height="33" BorderBrush="White" FontWeight="Bold" FontStyle="Italic" Grid.ColumnSpan="2"/>
         </Grid>
     </Grid>
 </Window>
