@@ -8,6 +8,7 @@ using System.Windows.Input;
 using ModelLayer.Business;
 using ModelLayer.Data;
 using WpfClubFromage.viewModel;
+using System.Windows;
 
 namespace WpfClubFromage.viewModel
 {
@@ -128,15 +129,14 @@ namespace WpfClubFromage.viewModel
 
             listFromages = new ObservableCollection<Fromage>(thedaofromage.SelectAll());
 
-            foreach (Fromage F in ListFromages)
+            foreach (Fromage lefromage in ListFromages)
             {
-                foreach (Pays P in ListPays)
+                int i = 0;
+                while (lefromage.Origin.Id != listPays[i].Id)
                 {
-                    if (F.Origin.Name == P.Name)
-                    {
-                        F.Origin = P;
-                    }
+                    i++;
                 }
+                lefromage.Origin = listPays[i];
             }
         }
 
@@ -156,7 +156,8 @@ namespace WpfClubFromage.viewModel
 
         private void UpdateFromage()
         {
-            this.vmDaoFromage.Update(this.activeFromage);     
+            this.vmDaoFromage.Update(this.activeFromage);
+            MessageBox.Show("Mis à jour réussis");
         }
     }
 }
