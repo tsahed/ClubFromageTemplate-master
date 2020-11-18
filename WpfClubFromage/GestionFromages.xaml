@@ -12,7 +12,7 @@
             <ColumnDefinition Width="1"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="listFromagesView" ItemsSource="{Binding ListFromages}" SelectedItem="{Binding SelectedFromage}" IsSynchronizedWithCurrentItem="True" Grid.Column="0" />
+        <ListBox x:Name="listFromagesView" ItemsSource="{Binding ListFromages}" SelectedItem="{Binding SelectedFromage}" IsSynchronizedWithCurrentItem="True" Grid.Column="0" Background="#FFF8ECFD" />
         <GridSplitter Grid.Column="1"/>
         <Grid x:Name="displayFromage" Grid.Column="2">
             <Grid.ColumnDefinitions>
@@ -29,12 +29,12 @@
             <Label Content="Nom Fromage" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
             <TextBox x:Name="nomFromage" Text="{Binding Name}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10"/>
             <Label Content="Origine" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
-            <ComboBox x:Name="listOrigin" ItemsSource="{Binding ListPays, Mode=OneTime}" SelectedItem="{Binding Origin}" IsSynchronizedWithCurrentItem="True" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10"/>
+            <ComboBox x:Name="listOrigin" ItemsSource="{Binding ListPays, Mode=OneTime}" SelectedItem="{Binding Origin}" IsSynchronizedWithCurrentItem="True" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10" BorderBrush="#FFF8ECFD"/>
             <Label Content="Date de création" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
             <DatePicker x:Name="dateCreation" SelectedDate="{Binding Creation}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10"/>
             <Label Content="Image du fromage" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
             <Image x:Name="imageFromage" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
-            <Button x:Name="updateFromage" Content="Mise à jour" Command="{Binding UpdateCommand}" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="10"/>
+            <Button x:Name="updateFromage" Content="Mise à jour" Command="{Binding UpdateCommand}" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="10" Background="#FFF8ECFD" BorderBrush="Black" FontWeight="Bold" Foreground="Black"/>
         </Grid>
     </Grid>
 </Window>
