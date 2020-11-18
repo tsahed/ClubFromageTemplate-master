@@ -22,7 +22,7 @@ namespace WpfClubFromage.viewModel
         private Fromage selectedFromage = new Fromage();
         private Fromage activeFromage = new Fromage();
 
-        private Fromage monFromage = new Fromage(1,"Rebloch");
+        private Fromage monFromage = new Fromage(1, "Rebloch");
 
         //déclaration des listes...à compléter avec les fromages
         public ObservableCollection<Pays> ListPays { get => listPays; set => listPays = value; }
@@ -40,19 +40,31 @@ namespace WpfClubFromage.viewModel
                 {
                     activeFromage.Name = value;
                     //création d'un évènement si la propriété Name (bindée dans le XAML) change
-                    OnPropertyChanged("Name");                   
+                    OnPropertyChanged("Name");
                 }
             }
         }
 
         public Pays Origin
         {
-            get => activeFromage.Origin;
+            get 
+            {
+                if (activeFromage.Origin == null)
+                {
+                    activeFromage.Origin = null;
+                    return null;    
+                } 
+
+                else
+                {
+                    return activeFromage.Origin;
+                }
+            }
             set
             {
                 if (activeFromage.Origin != value)
                 {
-                    activeFromage.Origin= value;
+                    activeFromage.Origin = value;
                     //création d'un évènement si la propriété Name (bindée dans le XAML) change
                     OnPropertyChanged("Origin");
                 }
@@ -116,6 +128,16 @@ namespace WpfClubFromage.viewModel
 
             listFromages = new ObservableCollection<Fromage>(thedaofromage.SelectAll());
 
+            foreach (Fromage F in ListFromages)
+            {
+                foreach (Pays P in ListPays)
+                {
+                    if (F.Origin.Name == P.Name)
+                    {
+                        F.Origin = P;
+                    }
+                }
+            }
         }
 
         //Méthode appelée au click du bouton UpdateCommand
@@ -128,15 +150,13 @@ namespace WpfClubFromage.viewModel
                     this.updateCommand = new RelayCommand(() => UpdateFromage(), () => true);
                 }
                 return this.updateCommand;
-
             }
 
         }
 
         private void UpdateFromage()
         {
-            //code du bouton - à coder
-            
+            this.vmDaoFromage.Update(this.activeFromage);     
         }
     }
 }
