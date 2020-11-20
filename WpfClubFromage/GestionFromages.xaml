@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfClubFromage"
         mc:Ignorable="d"
-        Title="Affichage des fromages" Height="450" Width="800">
+        Title="Affichage des fromages" Height="650" Width="800">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -105,11 +105,11 @@
                     </LinearGradientBrush>
                 </DatePicker.BorderBrush>
             </DatePicker>
-            <Label Content="Image du fromage" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+            <Label Content="Image du fromage" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,108,0,0" Grid.RowSpan="2"/>
             <Image x:Name="imageFromage" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
-            <Button Style="{DynamicResource ButtonStyle1}" x:Name="updateFromage" Content="Mise à jour" Command="{Binding UpdateCommand}" Grid.Row="4" Grid.ColumnSpan="2" Margin="32,44,34,10" Background="#FFFDE4D8" BorderBrush="White" FontWeight="Bold" Foreground="Black" FontStyle="Normal" Height="33" Width="333"/>
-            <Button Style="{DynamicResource ButtonStyle1}" x:Name="btn_ajouter" Content="Ajouter" Command="{Binding AddCommand}" Margin="32,55,0,0" Grid.Row="3" VerticalAlignment="Top" Height="33" Grid.ColumnSpan="2" Background="#FFC4F5DF" BorderBrush="White" FontWeight="Bold" FontStyle="Normal" HorizontalAlignment="Left" Width="333" Grid.RowSpan="2"/>
-            <Button Style="{DynamicResource ButtonStyle1}" x:Name="btn_supprimer" Content="Supprimer" Command="{Binding DeleteCommand}" HorizontalAlignment="Left" Margin="32,6,0,0" Grid.Row="4" VerticalAlignment="Top" Background="#FFFBCEF1" Width="333" Height="33" BorderBrush="White" FontWeight="Bold" FontStyle="Italic" Grid.ColumnSpan="2"/>
+            <Button Style="{DynamicResource ButtonStyle1}" x:Name="updateFromage" Content="Mise à jour" Command="{Binding UpdateCommand}" Grid.Row="4" Grid.ColumnSpan="2" Margin="33,64,33,30" Background="#FFFDE4D8" BorderBrush="White" FontWeight="Bold" Foreground="Black" FontStyle="Normal" Height="33" Width="333"/>
+            <Button Style="{DynamicResource ButtonStyle1}" x:Name="btn_ajouter" Content="Ajouter" Command="{Binding AddCommand}" Margin="32,115,0,0" Grid.Row="3" VerticalAlignment="Top" Height="33" Grid.ColumnSpan="2" Background="#FFC4F5DF" BorderBrush="White" FontWeight="Bold" FontStyle="Normal" HorizontalAlignment="Left" Width="334" Grid.RowSpan="2"/>
+            <Button Style="{DynamicResource ButtonStyle1}" x:Name="btn_supprimer" Content="Supprimer" Command="{Binding DeleteCommand}" HorizontalAlignment="Left" Margin="32,26,0,0" Grid.Row="4" VerticalAlignment="Top" Background="#FFFBCEF1" Width="334" Height="33" BorderBrush="White" FontWeight="Bold" FontStyle="Italic" Grid.ColumnSpan="2"/>
         </Grid>
     </Grid>
 </Window>

@@ -18,6 +18,8 @@ namespace WpfClubFromage.viewModel
         private DaoPays vmDaoPays;
         private DaoFromage vmDaoFromage;
         private ICommand updateCommand;
+        private ICommand deleteCommand;
+        private ICommand addCommand;
         private ObservableCollection<Pays> listPays;
         private ObservableCollection<Fromage> listFromages;
         private Fromage selectedFromage = new Fromage();
@@ -154,6 +156,30 @@ namespace WpfClubFromage.viewModel
 
         }
 
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                if (this.deleteCommand == null)
+                {
+                    this.deleteCommand = new RelayCommand(() => DeleteFromage(), () => true);
+                }
+                return this.deleteCommand;
+            }
+        }
+
+        public ICommand AddCommand
+        {
+            get
+            {
+                if (this.addCommand == null)
+                {
+                    this.addCommand = new RelayCommand(() => AddFromage(), () => true);
+                }
+                return this.addCommand;
+            }
+        }
+
         private void UpdateFromage()
         {
             this.vmDaoFromage.Update(this.activeFromage);
@@ -162,11 +188,15 @@ namespace WpfClubFromage.viewModel
 
         private void AddFromage()
         {
+            this.vmDaoFromage.Insert(this.activeFromage);
+            listFromages.Add(this.activeFromage);
             MessageBox.Show("Fromage ajouté");
         }
 
         private void DeleteFromage()
         {
+            this.vmDaoFromage.Delete(this.activeFromage);
+            //listFromages.Remove(this.activeFromage);
             MessageBox.Show("Fromage supprimé");
         }
     }

@@ -68,6 +68,12 @@ namespace ModelLayer.Data
             this.thedbal.Update(query);
         }
 
+        public void Delete(Fromage myFromage)
+        {
+            string query = "fromage where id = '" + myFromage.Id + "'";
+            this.thedbal.Delete(query);
+        }
+
         public List<Fromage> SelectAll()
         {
             List<Fromage> listFromage = new List<Fromage>();
