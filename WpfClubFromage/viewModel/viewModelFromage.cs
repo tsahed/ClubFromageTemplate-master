@@ -196,9 +196,12 @@ namespace WpfClubFromage.viewModel
         }
 
         private void AddFromage()
-        {
+        {          
+            Fromage select = new Fromage();
             this.vmDaoFromage.Insert(this.ActiveFromage);
             listFromages.Add(this.ActiveFromage);
+            select = this.ActiveFromage;
+            SelectedFromage = select;
             MessageBox.Show("Fromage ajouté");
         }
 
