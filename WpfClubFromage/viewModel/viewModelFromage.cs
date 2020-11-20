@@ -99,7 +99,10 @@ namespace WpfClubFromage.viewModel
                     selectedFromage = value;
                     //création d'un évènement si la propriété Name (bindée dans le XAML) change
                     OnPropertyChanged("SelectedFromage");
-                    ActiveFromage = selectedFromage;
+                    if (selectedFromage != null)
+                    {
+                        ActiveFromage = selectedFromage;
+                    }
                 }
             }
         }
@@ -182,21 +185,30 @@ namespace WpfClubFromage.viewModel
 
         private void UpdateFromage()
         {
-            this.vmDaoFromage.Update(this.activeFromage);
+            Fromage backup = new Fromage();
+            backup = ActiveFromage;
+            this.vmDaoFromage.Update(this.ActiveFromage);
+            int a = listFromages.IndexOf(SelectedFromage);
+            listFromages.Insert(a, ActiveFromage);
+            listFromages.RemoveAt(a+1);
+            SelectedFromage = backup;
             MessageBox.Show("Mis à jour réussis");
         }
 
         private void AddFromage()
         {
-            this.vmDaoFromage.Insert(this.activeFromage);
-            listFromages.Add(this.activeFromage);
+            this.vmDaoFromage.Insert(this.ActiveFromage);
+            listFromages.Add(this.ActiveFromage);
             MessageBox.Show("Fromage ajouté");
         }
 
         private void DeleteFromage()
         {
-            this.vmDaoFromage.Delete(this.activeFromage);
-            //listFromages.Remove(this.activeFromage);
+            Fromage backup = new Fromage();
+            backup = ActiveFromage;
+            this.vmDaoFromage.Delete(this.ActiveFromage);
+            int a = listFromages.IndexOf(SelectedFromage);
+            listFromages.RemoveAt(a);
             MessageBox.Show("Fromage supprimé");
         }
     }
