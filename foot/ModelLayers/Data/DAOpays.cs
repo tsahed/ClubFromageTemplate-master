@@ -16,12 +16,6 @@ namespace ModelLayers.Data
             this.thedbal = mydbal;
         }
 
-        public void Insert(Pays thePays)
-        {
-            string query = "pays (id, name) VALUES (" + thePays.Id + ",'" + thePays.Name.Replace("'", "''") + "')";
-            this.thedbal.Insert(query);
-        }
-
         public List<Pays> SelectAll()
         {
             List<Pays> listPays = new List<Pays>();

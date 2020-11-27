@@ -27,6 +27,13 @@ namespace ModelLayers.Business
             this.Nom = nom;
             this.Escouade = escouade;
         }
+
+        public Poste()
+        {
+            this.Id = id;
+            this.Nom = nom;
+            this.Escouade = escouade;
+        }
         #endregion
 
         #region Autres méthodes

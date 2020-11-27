@@ -17,7 +17,7 @@ create table Equipe(
 	id int primary key,
     nom varchar(50),
     dateCreation date
-)--nengine InnoDB;
+)--engine InnoDB;
 
 create table Joueur(
 	id int primary key,

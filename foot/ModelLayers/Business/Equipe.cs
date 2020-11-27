@@ -23,7 +23,7 @@ namespace ModelLayers.Business
         #endregion
 
         #region Constructeur
-        public Equipe(int id, string nom, DateTime dateCreation, List<Joueur> lesJoueurs)
+        public Equipe(int id, string nom, DateTime dateCreation)
         {
             this.Id = id;
             this.Nom = nom;
