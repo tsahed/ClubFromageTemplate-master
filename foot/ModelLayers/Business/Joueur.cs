@@ -12,16 +12,16 @@ namespace ModelLayers.Business
         private int id;
         private DateTime dateEntree;
         private DateTime dateNaissance;
-        private Pays pays;
-        private Poste poste;
+        private Pays lePays;
+        private Poste lePoste;
         #endregion
 
         #region Accesseurs
         public int Id { get => id; set => id = value; }
         public DateTime DateEntree { get => dateEntree; set => dateEntree = value; }
         public DateTime DateNaissance { get => dateNaissance; set => dateNaissance = value; }  
-        public Pays Pays { get => pays; set => pays = value; }
-        public Poste Poste { get => poste; set => poste = value; }
+        public Pays Pays { get => lePays; set => lePays = value; }
+        public Poste Poste { get => lePoste; set => lePoste = value; }
         #endregion
 
         #region Constructeurs
