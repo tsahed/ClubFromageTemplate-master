@@ -5,19 +5,19 @@ use dsfootamericain;
 create table Pays(
 	id int primary key,
     nom varchar(50)
-) engine InnoDB;
+) -- Engine InnoDB;
 
 create table Poste(
 	id int primary key,
     nom varchar(50),
     escouade int
-)engine InnoDB;
+) -- engine InnoDB;
 
 create table Equipe(
 	id int primary key,
     nom varchar(50),
     dateCreation date
-)engine InnoDB;
+)--nengine InnoDB;
 
 create table Joueur(
 	id int primary key,
@@ -30,7 +30,7 @@ create table Joueur(
     foreign key (pays) references Pays(id),
     foreign key (poste) references Poste(id),
     foreign key (equipe) references Equipe(id)
-)engine InnoDB;
+)--engine InnoDB;
 
 insert into Pays values (1,'France'),
 						(2,'USA'),

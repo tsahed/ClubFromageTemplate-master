@@ -1,0 +1,5 @@
+C:\Users\thali\Documents\SLAM\foot\ModelLayers\bin\Debug\netcoreapp3.1\ModelLayers.deps.json
+C:\Users\thali\Documents\SLAM\foot\ModelLayers\bin\Debug\netcoreapp3.1\ModelLayers.dll
+C:\Users\thali\Documents\SLAM\foot\ModelLayers\obj\Debug\netcoreapp3.1\ModelLayers.csprojAssemblyReference.cache
+C:\Users\thali\Documents\SLAM\foot\ModelLayers\obj\Debug\netcoreapp3.1\ModelLayers.AssemblyInfoInputs.cache
+C:\Users\thali\Documents\SLAM\foot\ModelLayers\obj\Debug\netcoreapp3.1\ModelLayers.AssemblyInfo.cs
